@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+
+
+         <LinearLayout
+             android:orientation="vertical"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent">
+             <RelativeLayout
+                 android:background="#fff"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content">
+
+                   <ImageView
+                       android:focusable="true"
+                      android:layout_width="30dp"
+                      android:layout_height="30dp"
+                      android:src="@mipmap/finsh"
+                       android:id="@+id/fin"
+                      />
+                 <android.support.v4.view.ViewPager
+                     android:id="@+id/pager"
+                     android:layout_width="match_parent"
+                     android:layout_height="180dp">
+                 </android.support.v4.view.ViewPager>
+
+                 <TextView
+                     android:textColor="#0f0"
+                     android:id="@+id/numbre"
+                     android:gravity="right|bottom"
+                     android:textSize="20sp"
+                     android:layout_width="wrap_content"
+                     android:layout_height="180dp"
+                     android:text="显示的当前页面"
+                     android:layout_alignParentRight="true"
+                     />
+             </RelativeLayout>
+
+             <LinearLayout
+                 android:layout_marginTop="10dp"
+                 android:layout_marginLeft="20dp"
+                 android:layout_marginRight="20dp"
+                 android:orientation="horizontal"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content">
+                 <TextView
+                     android:layout_weight="1"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:id="@+id/shoopprice"
+                     android:text="价格"
+                     android:textColor="#f00"
+                     android:textSize="20sp"
+                     />
+                 <TextView
+                     android:layout_gravity="center_vertical"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:id="@+id/shoopnum"
+                     android:text="数量"
+                     android:textSize="20sp"
+                     />
+
+             </LinearLayout>
+
+             <LinearLayout
+                 android:layout_marginTop="12dp"
+                 android:layout_marginLeft="20dp"
+                 android:layout_marginRight="20dp"
+                 android:orientation="vertical"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content">
+                 <TextView
+                     android:textSize="20sp"
+                     android:text="名称"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:id="@+id/shoopname"
+                     />
+             </LinearLayout>
+
+             <RelativeLayout
+                 android:layout_width="match_parent"
+                 android:layout_height="match_parent">
+                 <WebView
+                     android:id="@+id/web"
+                     android:layout_width="match_parent"
+                     android:layout_height="match_parent"
+                     tools:ignore="WebViewLayout">
+                 </WebView>
+
+                       <ImageView
+                           android:id="@+id/addshopp"
+                           android:layout_marginTop="260dp"
+                           android:layout_alignParentRight="true"
+                           android:layout_width="35dp"
+                           android:layout_height="35dp"
+                           android:src="@mipmap/common_btn_add_n_hdpi"
+                           />
+
+             </RelativeLayout>
+
+
+         </LinearLayout>
+
+
+
+
+</LinearLayout>

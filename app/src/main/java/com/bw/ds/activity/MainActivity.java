@@ -20,9 +20,15 @@ public class MainActivity extends BaseActivity {
     private RadioGroup kgroup;
     private FragmentManager supportFragmentManager;
 
+
+
     @Override   //布局
     protected int layoutResID() {
         return R.layout.activity_main;
+    }
+    @Override
+    protected Object initPresenter() {
+        return null;
     }
 
     @Override    //控件

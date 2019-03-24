@@ -1,6 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+     android:orientation="vertical"
+    android:background="#fff"
     android:layout_height="match_parent">
 
+          <android.support.v4.widget.SwipeRefreshLayout
+              android:layout_marginTop="10dp"
+              android:layout_weight="1"
+              android:id="@+id/swip"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+               <android.support.v7.widget.RecyclerView
+                   android:layout_marginTop="10dp"
+                   android:id="@+id/shopprecy"
+                   android:layout_width="match_parent"
+                   android:layout_height="match_parent">
+               </android.support.v7.widget.RecyclerView>
+
+          </android.support.v4.widget.SwipeRefreshLayout>
+
+
+
+      <LinearLayout
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content">
+
+               <CheckBox
+                   android:layout_marginLeft="10dp"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:id="@+id/check"
+                   android:text="全选"
+                   android:textSize="18sp"
+                   />
+           
+                 <TextView
+                     android:layout_marginLeft="20dp"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:text="合计:"
+                     android:textSize="18sp"
+                     />
+                  <TextView
+                      android:layout_weight="1"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:text="总价"
+                      android:id="@+id/nummoney"
+                      android:textSize="20sp"
+                      android:textColor="#f00"
+                      />
+
+                <Button
+                    android:id="@+id/myguy"
+                    android:background="#00ff0f"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="去结算"
+                    android:textColor="#fff"
+                    android:textSize="20sp"
+                    />
+
+         </LinearLayout>
 </LinearLayout>

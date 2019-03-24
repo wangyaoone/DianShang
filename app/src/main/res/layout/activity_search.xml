@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    >
+
+    <com.bw.ds.myview.MyView
+        android:id="@+id/myviewthree"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+    </com.bw.ds.myview.MyView>
+
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/searchsim"
+        android:visibility="visible"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <android.support.v7.widget.RecyclerView
+            android:layout_marginTop="15dp"
+            android:layout_width="match_parent"
+            android:id="@+id/recyfour"
+            android:layout_height="match_parent">
+        </android.support.v7.widget.RecyclerView>
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+
+       <ImageView
+           android:id="@+id/errorimg"
+           android:visibility="gone"
+           android:layout_marginTop="200dp"
+           android:layout_gravity="center"
+           android:layout_width="100dp"
+           android:layout_height="100dp"
+           android:src="@mipmap/error"
+           />
+
+
+           <TextView
+               android:visibility="gone"
+               android:layout_marginTop="400dp"
+               android:gravity="center"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:text="抱歉,没有更多商品啦~"
+               android:textSize="25sp"
+
+               />
+
+</LinearLayout>

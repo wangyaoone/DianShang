@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:background="@drawable/shapes"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="6dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:layout_width="135dp"
+        android:layout_height="wrap_content">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:layout_marginTop="6dp"
+            android:id="@+id/pzshimg"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            />
+
+        <TextView
+            android:singleLine="true"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="嗯嗯"
+            android:id="@+id/pzshname"
+            />
+        <TextView
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="嗯嗯"
+            android:id="@+id/pzshmorey"
+            android:textColor="#f00"
+            />
+    </LinearLayout>
+</LinearLayout>

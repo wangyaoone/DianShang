@@ -1,15 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:orientation="vertical"
     android:background="#fff"
     android:layout_height="match_parent">
 
-          <com.bw.ds.myview.MyView
-              android:id="@+id/myviewone"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              >
-          </com.bw.ds.myview.MyView>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <com.bw.ds.myview.MyView
+                android:id="@+id/myviewone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+            </com.bw.ds.myview.MyView>
 
-</LinearLayout>
+            <com.recker.flybanner.FlyBanner
+                android:layout_marginTop="13dp"
+                android:id="@+id/flyban"
+                android:layout_width="match_parent"
+                android:layout_height="120dp">
+            </com.recker.flybanner.FlyBanner>
+
+            <android.support.v7.widget.RecyclerView
+                  android:id="@+id/recy"
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent">
+            </android.support.v7.widget.RecyclerView>
+
+        </LinearLayout>
+
+
+
+</ScrollView>

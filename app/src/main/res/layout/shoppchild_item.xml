@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.mcxtzhang.swipemenulib.SwipeMenuLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:clickable="true"
+    android:background="#fff"
+    android:layout_height="match_parent">
+
+
+       <LinearLayout
+           android:layout_marginLeft="10dp"
+           android:layout_marginRight="15dp"
+           android:orientation="horizontal"
+           android:layout_width="350dp"
+           android:layout_height="wrap_content">
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                     android:id="@+id/shoppcheck"
+                    />
+
+              <LinearLayout
+                  android:background="@drawable/shapee"
+                  android:layout_marginLeft="10dp"
+                  android:orientation="horizontal"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content">
+
+                  <com.facebook.drawee.view.SimpleDraweeView
+                      android:layout_marginLeft="16dp"
+                      android:layout_marginBottom="5dp"
+                      android:layout_marginTop="5dp"
+                      android:layout_width="80dp"
+                      android:layout_height="80dp"
+                      android:id="@+id/shoppimg"
+                      />
+
+                    <LinearLayout
+                        android:layout_marginLeft="6dp"
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                               <TextView
+                                   android:layout_weight="1"
+                                   android:layout_width="match_parent"
+                                   android:layout_height="match_parent"
+                                   android:id="@+id/shoppname"
+                                   android:text="商品名字"
+                                   />
+
+                             <LinearLayout
+                                 android:orientation="horizontal"
+                                 android:layout_width="match_parent"
+                                 android:layout_height="wrap_content">
+                                      <TextView
+                                          android:textSize="20sp"
+                                          android:textColor="#f00"
+                                          android:layout_weight="1"
+                                          android:layout_width="match_parent"
+                                          android:layout_height="wrap_content"
+                                          android:id="@+id/shoppmomey"
+                                          android:text="价格"
+                                          />
+                                   <!-- 自定义view-->
+                                 <com.bw.ds.myview.addView
+                                     android:id="@+id/addview"
+                                     android:layout_width="wrap_content"
+                                     android:layout_height="wrap_content"
+                                     >
+                                 </com.bw.ds.myview.addView>
+
+                             </LinearLayout>
+                    </LinearLayout>
+
+              </LinearLayout>
+
+
+
+       </LinearLayout>
+
+    <Button
+        android:id="@+id/btnDelete"
+        android:layout_width="60dp"
+        android:layout_height="90dp"
+        android:background="#f00"
+        android:text="删除"
+        android:textColor="@android:color/white"/>
+</com.mcxtzhang.swipemenulib.SwipeMenuLayout
+    >

@@ -1,5 +1,6 @@
 package com.bw.ds.fragment;
 
+import android.util.Log;
 import android.view.View;
 
 import com.bw.ds.R;
@@ -15,6 +16,11 @@ public class CircleFragment extends BaseFragment {
     @Override
     protected int layoutResID() {
         return R.layout.circle_item;
+    }
+
+    @Override
+    protected Object initPresenter() {
+        return null;
     }
 
     @Override

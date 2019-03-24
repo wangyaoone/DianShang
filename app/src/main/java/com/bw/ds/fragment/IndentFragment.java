@@ -17,6 +17,11 @@ public class IndentFragment extends BaseFragment {
     }
 
     @Override
+    protected Object initPresenter() {
+        return null;
+    }
+
+    @Override
     protected void initView(View view) {
 
     }

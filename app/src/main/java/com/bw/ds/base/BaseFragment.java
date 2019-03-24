@@ -13,18 +13,22 @@ import android.view.ViewGroup;
  * @Date: 2019/3/17 14:18:49
  * @Description:
  */
-public abstract class BaseFragment extends Fragment {
+public abstract class BaseFragment<T> extends Fragment {
+
+    public T home;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
            View view=View.inflate(getActivity(),layoutResID(),null);
+                        home = initPresenter();
                         initView(view);
                         initDate();
                        return view;
     }
 
-
     protected abstract int layoutResID();
+    protected abstract T initPresenter();
     protected abstract void initView(View view);
     protected abstract void initDate();
 

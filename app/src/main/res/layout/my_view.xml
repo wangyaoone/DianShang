@@ -6,6 +6,8 @@
     >
 
     <LinearLayout
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         android:gravity="center_vertical"
         android:layout_marginTop="10dp"
         android:layout_marginRight="20dp"
@@ -22,9 +24,10 @@
             android:src="@mipmap/common_nav_btn_menu_n_hdpi"
             />
         <EditText
+            android:layout_centerVertical="true"
             android:background="@drawable/shapes"
             android:layout_width="262dp"
-            android:layout_height="20dp"
+            android:layout_height="26dp"
             android:id="@+id/myed"
             android:hint="搜索请输入"
             android:layout_marginLeft="10dp"

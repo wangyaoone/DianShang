@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.View;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -23,6 +24,7 @@ import com.bw.ds.presenter.DetailsPresenter;
 import com.bw.ds.view.DetailsView;
 import com.google.gson.Gson;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,6 +54,7 @@ public class DetailsActivity extends BaseActivity<DetailsPresenter> implements D
     private DetailsBean.ResultBean resultok;
     private String sid;
     private String uid;
+    private ImageView buy;
 
     @Override
     protected int layoutResID() {
@@ -70,6 +73,7 @@ public class DetailsActivity extends BaseActivity<DetailsPresenter> implements D
     protected void initView() {
         finn = findViewById(R.id.fin);
         add = findViewById(R.id.addshopp);
+        buy = findViewById(R.id.buyshopp);
     }
 
 
@@ -116,12 +120,41 @@ public class DetailsActivity extends BaseActivity<DetailsPresenter> implements D
         //网络请求详情的数据
         date.detailsDate(id);
 
+
+             //点击购买进入确认订单页面
+        buy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                uid = sp.getString("uid", "");
+                sid = sp.getString("sid", "");
+                if (uid.equals("")){
+         Intent intent = new Intent(DetailsActivity.this, LoginActivity.class);
+                    startActivity(intent);
+          Toast.makeText(DetailsActivity.this, "登录在购买", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                //操作
+        Intent intent1 = new Intent(DetailsActivity.this, FirmOrderActivity.class);
+                int commodityId = resultok.getCommodityId();
+                String commodityName = resultok.getCommodityName();
+                int price = resultok.getPrice();
+                String picture = resultok.getPicture();
+
+                intent1.putExtra("id",commodityId);
+                intent1.putExtra("name",commodityName);
+                intent1.putExtra("price",price);
+                intent1.putExtra("pic",picture);
+                       startActivity(intent1);
+            }
+        });
+
     }
 
 
     //得到查询购物车的值
     @Override
     public void vieww(List<ShoppBean.ResultBean> resultt) {
+
         sp = getSharedPreferences("嗯", MODE_PRIVATE);
         List<addMoreBean>list1 = new ArrayList<>();
         for (int i = 0; i <resultt.size(); i++) {
@@ -187,9 +220,20 @@ public class DetailsActivity extends BaseActivity<DetailsPresenter> implements D
         shoopnum.setText("已售:" + result.getStock());
 
         String details = result.getDetails();
-        String mimeType = "text/html";
-        String enCoding = "utf-8";
-        web.loadDataWithBaseURL(null, details, mimeType, enCoding, null);
+      //  web.loadData(details, "text/html; charset=UTF-8", null);
+
+        WebSettings settings = web.getSettings();
+        settings.setJavaScriptEnabled(true);
+        String s = "<script type=\"text/javascript\">" +
+
+                "var imgs=document.getElementsByTagName('img');" +
+                "for(var i = 0; i<imgs.length; i++){" +
+                "imgs[i].style.width='100%';" +
+                "imgs[i].style.height='auto';" +
+                "}" +
+                "</script>";
+        web.loadDataWithBaseURL(null, details + s + "<html><body>", "textml", "utf-8", null);
+
 
     }
 

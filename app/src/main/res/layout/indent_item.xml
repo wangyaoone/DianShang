@@ -1,6 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:orientation="vertical"
     android:layout_height="match_parent">
+
+
+       <RadioGroup
+           android:id="@+id/newgroup"
+           android:gravity="center"
+           android:layout_marginLeft="10dp"
+           android:layout_marginRight="10dp"
+           android:layout_marginTop="20dp"
+           android:background="@drawable/shapes"
+           android:orientation="horizontal"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content">
+                  <RadioButton
+                     android:textColor="@drawable/textselector"
+                      android:id="@+id/newb1"
+                      android:layout_marginTop="5dp"
+                      android:layout_marginLeft="6dp"
+                      android:layout_marginBottom="5dp"
+                      android:button="@null"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:text="全部订单"
+                      android:drawableTop="@mipmap/common_icon_alllist_n_hdpi"
+                      />
+           <RadioButton
+               android:textColor="@drawable/textselector"
+               android:id="@+id/newb2"
+               android:layout_marginTop="5dp"
+               android:layout_marginLeft="6dp"
+               android:layout_marginBottom="5dp"
+               android:button="@null"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="待付款页"
+               android:drawableTop="@mipmap/common_icon_pay_n_hdpi"
+               />
+           <RadioButton
+               android:textColor="@drawable/textselector"
+               android:id="@+id/newb3"
+               android:layout_marginTop="5dp"
+               android:layout_marginLeft="6dp"
+               android:layout_marginBottom="5dp"
+               android:button="@null"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="待收货页"
+               android:drawableTop="@mipmap/common_icon_receive_n"
+               />
+           <RadioButton
+               android:textColor="@drawable/textselector"
+               android:id="@+id/newb4"
+               android:layout_marginTop="5dp"
+               android:layout_marginLeft="6dp"
+               android:layout_marginBottom="5dp"
+               android:button="@null"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="待评价页"
+               android:drawableTop="@mipmap/commom_icon_comment_n_hdpi"
+               />
+           <RadioButton
+               android:textColor="@drawable/textselector"
+               android:id="@+id/newb5"
+               android:layout_marginTop="5dp"
+               android:layout_marginLeft="6dp"
+               android:layout_marginBottom="5dp"
+               android:button="@null"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="已完成页"
+               android:drawableTop="@mipmap/common_icon_finish_n_hdpi"
+               />
+       </RadioGroup>
+
+         <android.support.v4.view.ViewPager
+             android:background="@drawable/shapes"
+             android:layout_marginLeft="10dp"
+             android:layout_marginRight="10dp"
+             android:layout_marginTop="10dp"
+             android:id="@+id/nwepage"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent">
+         </android.support.v4.view.ViewPager>
 
 </LinearLayout>

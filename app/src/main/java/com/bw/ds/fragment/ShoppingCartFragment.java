@@ -95,7 +95,13 @@ public class ShoppingCartFragment extends BaseFragment<ShoppingPresenter> implem
         });
 
     }
-     //V层传过来的值
+
+    @Override
+    protected void loadData() {
+
+    }
+
+    //V层传过来的值
     @Override
     public void view(final List<ShoppBean.ResultBean> result) {
        /* Log.i("aa",result+"");*/

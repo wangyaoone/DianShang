@@ -77,6 +77,11 @@ public class HomePageFragment extends BaseFragment<HomePresenter> implements Pag
 
     }
 
+    @Override
+    protected void loadData() {
+
+    }
+
     @Override    //得到轮播数据
     public void banna(List<BannaBean.ResultBean> date) {
          List<String> list=new ArrayList<>();

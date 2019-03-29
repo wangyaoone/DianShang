@@ -29,7 +29,7 @@ public class ShoppingPresenter extends BasePresenter<ShoppView> {
         shoppModel.setShoppDate(new ShoppModel.ShoppDate() {
             @Override
             public void getdate(List<ShoppBean.ResultBean> result) {
-                shoppView.view(result);
+                  shoppView.view(result);
             }
         });
     }

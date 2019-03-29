@@ -33,7 +33,7 @@ public class SearchModel {
     public void search(String name, int page) {
                  //调用工具类
         ApiService getserviser = UtilDate.getUtilDate().getserviser(Api.Url, ApiService.class);
-        Call<SearchBean> call = getserviser.getsearch(name, page, 5);
+        Call<SearchBean> call = getserviser.getsearch(name, page, 10);
              call.enqueue(new Callback<SearchBean>() {
                  @Override
                  public void onResponse(Call<SearchBean> call, Response<SearchBean> response) {

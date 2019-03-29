@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+            <TextView
+                android:id="@+id/a"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="80dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="请选择支付方式"
+                android:textSize="20sp"
+                />
+
+            <LinearLayout
+                android:id="@+id/b"
+                android:layout_below="@id/a"
+                android:background="@drawable/shapes"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:layout_marginRight="15dp"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginTop="10dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                                   <ImageView
+                                       android:layout_width="wrap_content"
+                                       android:layout_height="wrap_content"
+                                       android:src="@mipmap/common_icon_money_n_hdpi"
+                                       />
+                                   <TextView
+                                       android:layout_weight="1"
+                                       android:layout_marginLeft="20dp"
+                                       android:layout_width="match_parent"
+                                       android:layout_height="wrap_content"
+                                       android:text="余额支付"
+                                       android:textSize="20sp"
+                                       />
+
+                            <!--默认的switchbutton-->
+                            <com.suke.widget.SwitchButton
+                                android:id="@+id/paymoney"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+
+                        </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginRight="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/common_icon_weixin_n_hdpi"
+                        />
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_marginLeft="20dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="微信支付"
+                        android:textSize="20sp"
+                        />
+
+                    <!--默认的switchbutton-->
+                    <com.suke.widget.SwitchButton
+                        android:id="@+id/payweixin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_marginRight="15dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/common_icon_zhifubao_n_hdpi"
+                        />
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_marginLeft="20dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="支付宝支付"
+                        android:textSize="20sp"
+                        />
+
+                    <!--默认的switchbutton-->
+                    <com.suke.widget.SwitchButton
+                        android:id="@+id/payzhihubao"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+            </LinearLayout>
+
+         <Button
+             android:layout_below="@id/b"
+             android:id="@+id/payqian"
+             android:background="#FFB6C1"
+             android:textColor="#fff"
+             android:textSize="15sp"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_marginLeft="30dp"
+             android:layout_marginRight="30dp"
+             android:layout_marginTop="100dp"
+             android:text="余额支付?元"
+             />
+
+    <RelativeLayout
+        android:id="@+id/yes"
+        android:visibility="gone"
+        android:background="#666"
+        android:alpha="0.8"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:id="@+id/yy"
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/yes"
+            />
+        <TextView
+            android:layout_centerInParent="true"
+            android:textColor="#f00"
+            android:layout_below="@id/yy"
+            android:textSize="25sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="支付成功"
+            android:id="@+id/finsh"
+            />
+    </RelativeLayout>
+
+
+
+        <RelativeLayout
+            android:id="@+id/no"
+            android:visibility="gone"
+            android:background="#666"
+            android:alpha="0.8"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/nn"
+                android:layout_centerInParent="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/no"
+                />
+            <TextView
+              android:layout_centerInParent="true"
+                android:textColor="#f00"
+                android:layout_below="@id/nn"
+                android:textSize="25sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="支付失败"
+                />
+        </RelativeLayout>
+
+
+
+</RelativeLayout>

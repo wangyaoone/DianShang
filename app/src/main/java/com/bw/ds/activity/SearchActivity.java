@@ -1,6 +1,7 @@
 package com.bw.ds.activity;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -25,6 +26,7 @@ import java.util.logging.Handler;
 public class SearchActivity extends BaseActivity<SearchPresenter> implements SearchView {
 
     private int page=1;
+    private String A;
     private MyView thiree;
     private RecyclerView recy;
     private ImageView img;
@@ -66,20 +68,20 @@ public class SearchActivity extends BaseActivity<SearchPresenter> implements Sea
          //获取到输入框的值
         Intent intent = getIntent();
         final String name = intent.getStringExtra("name");
+                      A=name;
               date.search(name,page);
-
-       //重新走一遍网络
+        //点击新的搜索按钮重新走一遍网络
         sousuo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String s = ed.getText().toString();
-                if (!TextUtils.isEmpty(s)){
-                    date.search(s,page);
+                String name = ed.getText().toString();
+                        A=name;
+                if (!TextUtils.isEmpty(name)){
+                    date.search(name,page);
                     return;
                 }
-    Toast.makeText(SearchActivity.this, "输入不为空", Toast.LENGTH_SHORT).show();
-
-            }
+       Toast.makeText(SearchActivity.this, "输入不为空", Toast.LENGTH_SHORT).show();
+             }
         });
 
             //下拉刷新
@@ -89,7 +91,7 @@ public class SearchActivity extends BaseActivity<SearchPresenter> implements Sea
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        date.search(name,page);
+                        date.search(A,page);
                         sim.setRefreshing(false);
                     }
                 },2000);
@@ -97,8 +99,19 @@ public class SearchActivity extends BaseActivity<SearchPresenter> implements Sea
         });
 
         //上拉加载
-
-
+        recy.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                       // date.search(name,page++);
+                        sim.setRefreshing(false);
+                    }
+                },2000);
+            }
+        });
     }
 
     //得到搜索到的值

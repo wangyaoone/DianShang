@@ -108,15 +108,16 @@ public class LoginActivity extends BaseActivity<Presenter> implements com.bw.ds.
     }
     @Override    //得到状态码
     public void login(LoginBean date) {
-        Log.i("aa",date.getResult().getNickName());;
+        //Log.i("aa",date.getResult().getNickName());;
         //使用wven回值
-        EventBus.getDefault().post(date.getResult().getHeadPic()+","+date.getResult().getNickName());
               if (date.getStatus().equals("0000")){
-
+                  //EventBus.getDefault().post(date.getResult().getHeadPic()+","+date.getResult().getNickName());
                   //将uid及sid存进去用于将来取值
                   SharedPreferences.Editor edit1 = spp.edit();
                   edit1.putString("uid",date.getResult().getUserId()+"");
                   edit1.putString("sid",date.getResult().getSessionId()+"");
+                  edit1.putString("nname",date.getResult().getNickName());
+                  edit1.putString("npic",date.getResult().getHeadPic());
                   edit1.commit();
 
                   //如果成功将密码和账号存进SP中

@@ -33,7 +33,12 @@
         <activity android:name=".activity.LoginActivity" />
         <activity android:name=".activity.RegisterActivity" />
         <activity android:name=".activity.DetailsActivity" />
-        <activity android:name=".activity.SearchActivity"></activity>
+        <activity android:name=".activity.SearchActivity" />
+        <activity android:name=".activity.MyPageMoneyActivity" />
+        <activity android:name=".activity.AdressActivity" />
+        <activity android:name=".activity.FirmOrderActivity" />
+        <activity android:name=".activity.NewAdressActivity" />
+        <activity android:name=".activity.PayMentActivity"></activity>
     </application>
 
 </manifest>

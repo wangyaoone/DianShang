@@ -80,7 +80,7 @@ public class DetailsModel {
     }
     //进行同步购物车  及添加购物车
     public void addShopp(String uid, String sid, String sss) {
-
+          Log.i("aaa",sss);
        //找网络工具类
       /* ApiService apiService = UtilDate.getUtilDate().getserviserHand(Api.Url, uid, sid, ApiService.class);
         Call<AddShoppBean> call = apiService.getaddshopp(sss);
@@ -105,6 +105,8 @@ public class DetailsModel {
                     @Override
                     public void onSuccess(com.lzy.okgo.model.Response<String> response) {
                         String s = response.body().toString();
+
+                            //Log.i("aaa",s);
                         hdate.addshopp(s);
                     }
                 });

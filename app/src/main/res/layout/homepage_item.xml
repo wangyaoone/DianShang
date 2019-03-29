@@ -16,6 +16,8 @@
             </com.bw.ds.myview.MyView>
 
             <com.recker.flybanner.FlyBanner
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 android:layout_marginTop="13dp"
                 android:id="@+id/flyban"
                 android:layout_width="match_parent"

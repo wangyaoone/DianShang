@@ -18,11 +18,11 @@
                  android:layout_height="wrap_content">
 
                    <ImageView
-                       android:focusable="true"
+                      android:focusable="true"
                       android:layout_width="30dp"
                       android:layout_height="30dp"
                       android:src="@mipmap/finsh"
-                       android:id="@+id/fin"
+                      android:id="@+id/fin"
                       />
                  <android.support.v4.view.ViewPager
                      android:id="@+id/pager"
@@ -88,19 +88,28 @@
              <RelativeLayout
                  android:layout_width="match_parent"
                  android:layout_height="match_parent">
+
                  <WebView
                      android:id="@+id/web"
                      android:layout_width="match_parent"
                      android:layout_height="match_parent"
-                     tools:ignore="WebViewLayout">
+                     >
                  </WebView>
+                 <ImageView
+                     android:id="@+id/buyshopp"
+                     android:layout_marginTop="200dp"
+                     android:layout_alignParentRight="true"
+                     android:layout_width="40dp"
+                     android:layout_height="40dp"
+                     android:src="@mipmap/common_btn_buy_n_hdpi"
+                     />
 
                        <ImageView
                            android:id="@+id/addshopp"
-                           android:layout_marginTop="260dp"
+                           android:layout_marginTop="245dp"
                            android:layout_alignParentRight="true"
-                           android:layout_width="35dp"
-                           android:layout_height="35dp"
+                           android:layout_width="40dp"
+                           android:layout_height="40dp"
                            android:src="@mipmap/common_btn_add_n_hdpi"
                            />
 

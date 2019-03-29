@@ -2,15 +2,20 @@ package com.bw.ds.api;
 
 import com.bw.ds.bean.AddShoppBean;
 import com.bw.ds.bean.BannaBean;
+import com.bw.ds.bean.ChaBean;
+import com.bw.ds.bean.CircleBean;
 import com.bw.ds.bean.DetailsBean;
 import com.bw.ds.bean.LoginBean;
 import com.bw.ds.bean.PageBean;
+import com.bw.ds.bean.PayBean;
+import com.bw.ds.bean.PlaceNoPrderOkBean;
 import com.bw.ds.bean.RegisterBean;
 import com.bw.ds.bean.SearchBean;
 import com.bw.ds.bean.ShoppBean;
 
 import java.util.Map;
 
+import io.reactivex.Flowable;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -56,4 +61,19 @@ public interface ApiService {
      //根据关键词查询商品信息
       @GET("small/commodity/v1/findCommodityByKeyword")
       Call<SearchBean>getsearch(@Query("keyword")String keyword, @Query("page")int page, @Query("count")int count);
+     //圈子类表
+      @GET("small/circle/v1/findCircleList")
+      Flowable<CircleBean> getcircle(@Query("page")int page, @Query("count")int count);
+      //创建订单
+      @POST("small/order/verify/v1/createOrder")
+      @FormUrlEncoded
+      Call<PlaceNoPrderOkBean>getplacenoorder(@Field("totalPrice")double totalPrice, @Field("addressId")int addressId, @Field("orderInfo")String orderInfo);
+      //支付
+      @POST("small/order/verify/v1/pay")
+      @FormUrlEncoded
+      Call<PayBean>getpay(@Field("orderId")String orderId, @Field("payType")int payType);
+      //根据订单状态查询订单信息
+      @GET("small/order/verify/v1/findOrderListByStatus")
+      Call<ChaBean>getstate(@Query("status")int status, @Query("page")int page, @Query("count")int count);
+
 }

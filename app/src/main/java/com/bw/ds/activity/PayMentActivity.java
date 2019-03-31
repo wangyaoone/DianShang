@@ -106,7 +106,7 @@ public class PayMentActivity extends BaseActivity<PayPresenter> implements PayVi
     public void view(String message) {
             if (message.equals("支付成功")){
                  findViewById(R.id.yes).setVisibility(View.VISIBLE);
-                findViewById(R.id.no).setVisibility(View.GONE);
+                 findViewById(R.id.no).setVisibility(View.GONE);
                    return;
             }
             if (message.equals("支付失败")){

@@ -1,32 +1,30 @@
 package com.bw.ds.api;
 
-import com.bw.ds.bean.AddShoppBean;
 import com.bw.ds.bean.BannaBean;
 import com.bw.ds.bean.ChaBean;
 import com.bw.ds.bean.CircleBean;
 import com.bw.ds.bean.DetailsBean;
 import com.bw.ds.bean.LoginBean;
+import com.bw.ds.bean.NewAdressBean;
 import com.bw.ds.bean.PageBean;
 import com.bw.ds.bean.PayBean;
 import com.bw.ds.bean.PlaceNoPrderOkBean;
+import com.bw.ds.bean.PopOneBean;
+import com.bw.ds.bean.PopTwoBean;
 import com.bw.ds.bean.RegisterBean;
 import com.bw.ds.bean.SearchBean;
 import com.bw.ds.bean.ShoppBean;
+import com.bw.ds.bean.ThreeShoppBean;
 
 import java.util.Map;
 
 import io.reactivex.Flowable;
-import okhttp3.ResponseBody;
 import retrofit2.Call;
-import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
-import retrofit2.http.Header;
-import retrofit2.http.HeaderMap;
 import retrofit2.http.POST;
-import retrofit2.http.PUT;
 import retrofit2.http.Query;
 
 /**
@@ -75,5 +73,17 @@ public interface ApiService {
       //根据订单状态查询订单信息
       @GET("small/order/verify/v1/findOrderListByStatus")
       Call<ChaBean>getstate(@Query("status")int status, @Query("page")int page, @Query("count")int count);
-
+      //添加收获地址
+      @POST("small/user/verify/v1/addReceiveAddress")
+      @FormUrlEncoded
+      Call<NewAdressBean>getnewadress(@Field("realName")String realName, @Field("phone")String phone, @Field("address")String address, @Field("zipCode")String zipCode);
+      //三级分类一级
+      @GET("small/commodity/v1/findFirstCategory")
+      Call<PopOneBean>getpop1();
+      //三级分类二级
+      @GET("small/commodity/v1/findSecondCategory")
+      Call<PopTwoBean>getpop2(@Query("firstCategoryId")String firstCategoryId);
+       //三级分类第三级
+       @GET("small/commodity/v1/findCommodityByCategory")
+       Call<ThreeShoppBean>getthreeshopp(@Query("categoryId")String categoryId, @Query("page")int page, @Query("count")int count);
 }

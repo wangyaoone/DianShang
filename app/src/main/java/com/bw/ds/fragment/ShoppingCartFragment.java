@@ -94,6 +94,9 @@ public class ShoppingCartFragment extends BaseFragment<ShoppingPresenter> implem
             }
         });
 
+             //操作价钱
+        //money
+
     }
 
     @Override
@@ -133,6 +136,7 @@ public class ShoppingCartFragment extends BaseFragment<ShoppingPresenter> implem
                 result.remove(i);
                 shoppAdapter.notifyDataSetChanged();
             }
+
         });
 
     }

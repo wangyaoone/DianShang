@@ -25,7 +25,7 @@ import java.util.List;
  * @Description:
  */
 public class OrderForGoodsAdapter extends RecyclerView.Adapter<OrderForGoodsAdapter.myviewholder> {
-
+    int nnn=1;
     private Context   context;
     private List<OrderForGoodsBean> list;
 
@@ -48,7 +48,7 @@ public class OrderForGoodsAdapter extends RecyclerView.Adapter<OrderForGoodsAdap
         myviewholder.img.setImageURI(uri);
         myviewholder.name.setText(list.get(i).getCommodityName());
         myviewholder.money.setText("¥"+list.get(i).getPrice());
-
+        money.getdate2(nnn);
         myviewholder.addview.setDateClick(new addView.DateClick() {
             @Override
             public void getdate(int num) {
@@ -57,6 +57,7 @@ public class OrderForGoodsAdapter extends RecyclerView.Adapter<OrderForGoodsAdap
                 money.getdate2(num);
             }
         });
+
     }
 
     @Override
@@ -84,6 +85,7 @@ public class OrderForGoodsAdapter extends RecyclerView.Adapter<OrderForGoodsAdap
           public interface Money{
                void getdate(int sum);
                void getdate2(int a);
+              void getdate3(int b);
           }
           private Money money;
 

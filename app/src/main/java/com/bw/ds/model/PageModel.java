@@ -6,6 +6,7 @@ import com.bw.ds.api.Api;
 import com.bw.ds.api.ApiService;
 import com.bw.ds.bean.BannaBean;
 import com.bw.ds.bean.PageBean;
+import com.bw.ds.bean.PopOneBean;
 import com.bw.ds.util.UtilDate;
 
 import java.util.List;
@@ -21,11 +22,15 @@ import retrofit2.Response;
  */
 public class PageModel {
 
+
+
     public interface Date{
         //轮播的数据
         void getdate(List<BannaBean.ResultBean> date);
         //首页展示的数据
         void getpagedate(PageBean.ResultBean result);
+        //pop的数据
+        void getpopone(List<PopOneBean.ResultBean> result);
     }
     private Date date;
     public void setDate(Date date) {
@@ -61,6 +66,23 @@ public class PageModel {
             }
             @Override
             public void onFailure(Call<PageBean> call, Throwable t) {
+
+            }
+        });
+    }
+
+     //popone
+    public void popone() {
+        ApiService getserviser = UtilDate.getUtilDate().getserviser(Api.Url, ApiService.class);
+        Call<PopOneBean> call = getserviser.getpop1();
+        call.enqueue(new Callback<PopOneBean>() {
+            @Override
+            public void onResponse(Call<PopOneBean> call, Response<PopOneBean> response) {
+                List<PopOneBean.ResultBean> result = response.body().getResult();
+                date.getpopone(result);
+            }
+            @Override
+            public void onFailure(Call<PopOneBean> call, Throwable t) {
 
             }
         });

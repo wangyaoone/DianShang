@@ -78,9 +78,7 @@ public class FirmOrderActivity extends AppCompatActivity implements PlaceNoOrder
         String pic = intent.getStringExtra("pic");
         String[] split = pic.split(",");
 
-        list1 = new ArrayList<>();
-        FirmMoreBean firmMoreBean = new FirmMoreBean(id+"",1+"");
-        list1.add(firmMoreBean);
+
 
                   zongjia.setText(price+"");
 
@@ -120,11 +118,20 @@ public class FirmOrderActivity extends AppCompatActivity implements PlaceNoOrder
             @Override
             public void getdate2(int a) {
                 shuliang.setText(a+"");
+                list1 = new ArrayList<>();
+                FirmMoreBean firmMoreBean = new FirmMoreBean(id+"",a+"");
+                list1.add(firmMoreBean);
+            }
 
-
+            @Override
+            public void getdate3(int b) {
+                list1 = new ArrayList<>();
+                FirmMoreBean firmMoreBean = new FirmMoreBean(id+"",b+"");
+                list1.add(firmMoreBean);
             }
 
         });
+
 
 
         sp = getSharedPreferences("嗯", MODE_PRIVATE);
@@ -178,10 +185,9 @@ public class FirmOrderActivity extends AppCompatActivity implements PlaceNoOrder
                    intent.putExtra("price",zongjia.getText());
                    startActivity(intent);
                    finish();
-
                    return;
                }
-           Toast.makeText(this, "联动有问题默认一", Toast.LENGTH_SHORT).show();
+           Toast.makeText(this, "Bug老子改了哈哈哈", Toast.LENGTH_SHORT).show();
     }
 
     //地址

@@ -5,6 +5,7 @@ import android.util.Log;
 import com.bw.ds.base.BaseFragmentPragrent;
 import com.bw.ds.bean.BannaBean;
 import com.bw.ds.bean.PageBean;
+import com.bw.ds.bean.PopOneBean;
 import com.bw.ds.model.PageModel;
 import com.bw.ds.view.PageView;
 
@@ -40,11 +41,25 @@ public class HomePresenter extends BaseFragmentPragrent<PageView> {
                /* Log.i("aa",result+"");*/
                 pageView.pagedate(result);
             }
+
+            @Override
+            public void getpopone(List<PopOneBean.ResultBean> result) {
+                pageView.getpopone(result);
+            }
         });
     }
+
+    //pop  一级 数据
+    public void popone() {
+        pageModel.popone();
+    }
+
 
     @Override
     public void PageDate() {
         pageModel.PageDate();
     }
+
+
+
 }

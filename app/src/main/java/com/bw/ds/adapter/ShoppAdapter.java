@@ -4,6 +4,7 @@ import android.content.Context;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -81,9 +82,24 @@ public class ShoppAdapter extends RecyclerView.Adapter<ShoppAdapter.viewholder> 
 
         //接收自定义控件的值
         viewholder.addview.setDateClick(new addView.DateClick() {
+
+
+
             @Override
             public void getdate(int num) {
-                 //次值为输入框的值
+                 //此值为输入框的值
+                //计算价格
+                 int i1=0;
+                for (int a=0;a<list.size();a++){
+                    int count = list.get(i).getCount();
+                    count+=num;
+                    i1 = list.get(i).getPrice() * count;
+
+
+                }
+                   notifyDataSetChanged();
+                Log.i("aaa",i1+"");
+
             }
         });
 
@@ -94,6 +110,8 @@ public class ShoppAdapter extends RecyclerView.Adapter<ShoppAdapter.viewholder> 
                 bool.delete(i);
             }
         });
+
+
 
     }
 
@@ -138,6 +156,7 @@ public class ShoppAdapter extends RecyclerView.Adapter<ShoppAdapter.viewholder> 
        public interface Bool{
           void getdate(boolean flag);
           void delete(int i);
+
        }
        private Bool bool;
 

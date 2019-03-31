@@ -2,6 +2,7 @@ package com.bw.ds.view;
 
 import com.bw.ds.bean.BannaBean;
 import com.bw.ds.bean.PageBean;
+import com.bw.ds.bean.PopOneBean;
 
 import java.util.List;
 
@@ -13,4 +14,5 @@ import java.util.List;
 public interface PageView {
         void banna(List<BannaBean.ResultBean> date);
         void pagedate(PageBean.ResultBean result);
+        void getpopone(List<PopOneBean.ResultBean> result);
 }

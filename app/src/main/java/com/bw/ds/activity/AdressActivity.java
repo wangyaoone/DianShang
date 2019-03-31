@@ -109,4 +109,43 @@ public class AdressActivity extends AppCompatActivity {
               recy.setAdapter(adressAdapter);
           }
       }
+
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Intent intent = getIntent();
+        final String uid = intent.getStringExtra("uid");
+        final String sid = intent.getStringExtra("sid");
+        String url="http://mobile.bwstudent.com/small/user/verify/v1/receiveAddressList";
+        //当前页面网络请求  解析
+        OkHttpClient builder = new OkHttpClient.Builder()
+                .addInterceptor(new Interceptor() {
+                    @Override
+                    public Response intercept(Chain chain) throws IOException {
+                        Request builder1 = chain.request().newBuilder()
+                                .addHeader("userId",uid)
+                                .addHeader("sessionId",sid)
+                                .build();
+                        return chain.proceed(builder1);
+                    }
+                })
+                .build();
+        Request build = new Request.Builder().url(url).build();
+        Call call = builder.newCall(build);
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+
+            }
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                String string = response.body().string();
+                //Log.i("bbb",string);
+                Message message = new Message();
+                message.obj=string;
+                myHandLer.sendMessage(message);
+            }
+        });
+    }
 }

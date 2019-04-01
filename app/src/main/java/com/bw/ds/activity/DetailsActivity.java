@@ -24,6 +24,11 @@ import com.bw.ds.presenter.DetailsPresenter;
 import com.bw.ds.view.DetailsView;
 import com.google.gson.Gson;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +36,9 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.internal.Utils;
+
+import static org.jsoup.nodes.Document.OutputSettings.Syntax.html;
 
 public class DetailsActivity extends BaseActivity<DetailsPresenter> implements DetailsView {
 
@@ -220,21 +228,12 @@ public class DetailsActivity extends BaseActivity<DetailsPresenter> implements D
         shoopnum.setText("已售:" + result.getStock());
 
         String details = result.getDetails();
-      //  web.loadData(details, "text/html; charset=UTF-8", null);
+
+        web.loadData(details, "text/html; charset=UTF-8", null);
+       web.getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
 
         WebSettings settings = web.getSettings();
-        settings.setJavaScriptEnabled(true);
-        String s = "<script type=\"text/javascript\">" +
-
-                "var imgs=document.getElementsByTagName('img');" +
-                "for(var i = 0; i<imgs.length; i++){" +
-                "imgs[i].style.width='100%';" +
-                "imgs[i].style.height='auto';" +
-                "}" +
-                "</script>";
-        web.loadDataWithBaseURL(null, details + s + "<html><body>", "textml", "utf-8", null);
-
-
+        settings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
     }
 
 

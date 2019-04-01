@@ -80,6 +80,8 @@ dependencies {
     implementation 'liji.library.dev:citypickerview:4.1.0'
     //仿苹果按钮
     implementation 'com.github.zcweng:switch-button:0.0.3@aar'
+    //webview自适应
+    implementation 'org.jsoup:jsoup:1.10.2'
 
 
 }

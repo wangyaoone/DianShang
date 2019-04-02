@@ -64,6 +64,14 @@ public class ShoppAdapter extends RecyclerView.Adapter<ShoppAdapter.viewholder> 
         viewholder.check.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                   //价格
+
+                  if (viewholder.check.isChecked()){
+
+                  }
+
+
                 String s = list.get(i).getCommodityId() + "";
                 map.put(s,  viewholder.check.isChecked());
                 boolean flag=true;
@@ -83,23 +91,9 @@ public class ShoppAdapter extends RecyclerView.Adapter<ShoppAdapter.viewholder> 
         //接收自定义控件的值
         viewholder.addview.setDateClick(new addView.DateClick() {
 
-
-
             @Override
             public void getdate(int num) {
-                 //此值为输入框的值
-                //计算价格
-                 int i1=0;
-                for (int a=0;a<list.size();a++){
-                    int count = list.get(i).getCount();
-                    count+=num;
-                    i1 = list.get(i).getPrice() * count;
-
-
-                }
-                   notifyDataSetChanged();
-                Log.i("aaa",i1+"");
-
+                mapmoney.put(list.get(i).getPrice(),num);
             }
         });
 

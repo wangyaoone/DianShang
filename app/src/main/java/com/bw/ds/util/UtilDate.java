@@ -58,9 +58,9 @@ public class UtilDate {
 
                  //添加网络拦截器
                  .writeTimeout(10,TimeUnit.SECONDS)
-                .readTimeout(10,TimeUnit.SECONDS)
-                .connectTimeout(10,TimeUnit.SECONDS)
-                .retryOnConnectionFailure(true)
+                 .readTimeout(10,TimeUnit.SECONDS)
+                 .connectTimeout(10,TimeUnit.SECONDS)
+                 .retryOnConnectionFailure(true)
 
                  //添加运用拦截器
                  .addInterceptor(new Interceptor() {

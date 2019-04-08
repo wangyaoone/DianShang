@@ -1,6 +1,7 @@
 package com.bw.ds.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -14,6 +15,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bw.ds.R;
+import com.bw.ds.activity.DetailsActivity;
+import com.bw.ds.activity.FirmOrderActivity;
 import com.bw.ds.adapter.ShoppAdapter;
 import com.bw.ds.base.BaseFragment;
 import com.bw.ds.bean.ShoppBean;
@@ -86,17 +89,13 @@ public class ShoppingCartFragment extends BaseFragment<ShoppingPresenter> implem
     Toast.makeText(getActivity(), "刷啥啊,登了吗", Toast.LENGTH_SHORT).show();
                         }else
                         {
-                         //进入p层
+                            //进入p层
                             home.Shopp(uid, sid);
                         }
                     }
                 },2000);
             }
         });
-
-             //操作价钱
-        //money
-
     }
 
     @Override
@@ -108,27 +107,57 @@ public class ShoppingCartFragment extends BaseFragment<ShoppingPresenter> implem
     @Override
     public void view(final List<ShoppBean.ResultBean> result) {
        /* Log.i("aa",result+"");*/
-                 //适配器
+        //适配器
         final ShoppAdapter shoppAdapter = new ShoppAdapter(getActivity(),result);
         recyy.setAdapter(shoppAdapter);
 
-        //设置全选及全不选
-        check.setOnClickListener(new View.OnClickListener() {
+
+       //点击结算
+        mybuy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (check.isChecked()){
-                    shoppAdapter.getcheck(true);
-                }else
-                {
-                    shoppAdapter.getcheck(false);
+                for (int i=0;i<result.size();i++){
+                      if (result.get(i).isIschecked()){
+                          int commodityId = result.get(i).getCommodityId();
+                          String commodityName = result.get(i).getCommodityName();
+                          int price = result.get(i).getPrice();
+                          String picture = result.get(i).getPic();
+                          Intent intent1 = new Intent(getActivity(), FirmOrderActivity.class);
+                          intent1.putExtra("id",commodityId);
+                          intent1.putExtra("name",commodityName);
+                          intent1.putExtra("price",price);
+                          intent1.putExtra("pic",picture);
+                               startActivity(intent1);
+                            return;
+                      }
                 }
             }
         });
-        //设置反选
+
+
+       //点击全选及全不选及价格
+        check.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               for (int i=0;i<result.size();i++){
+                   result.get(i).setIschecked(check.isChecked());
+               }
+                shoppAdapter.notifyDataSetChanged();
+                //调用价钱
+                moneyy(result);
+            }
+        });
+     //反选
         shoppAdapter.setBool(new ShoppAdapter.Bool() {
             @Override
-            public void getdate(boolean flag) {
-                check.setChecked(flag);
+            public void getdate() {
+                boolean da=true;
+                for (int i=0;i<result.size();i++){
+                    da=da&result.get(i).isIschecked();
+                }
+                check.setChecked(da);
+                //调用价钱
+                moneyy(result);
             }
 
             @Override
@@ -136,11 +165,30 @@ public class ShoppingCartFragment extends BaseFragment<ShoppingPresenter> implem
                 result.remove(i);
                 shoppAdapter.notifyDataSetChanged();
             }
+            @Override
+            public void del(int num, int i) {
+                   if (num==0){
+                       result.remove(i);
+                       shoppAdapter.notifyDataSetChanged();
+                   }
+            }
+
 
         });
-
     }
 
+     //价格
+     private void  moneyy(List<ShoppBean.ResultBean> result){
+                 int zong=0;
+              for (int i=0;i<result.size();i++){
+                     if (result.get(i).isIschecked()){
+                         //价格乘以数量
+     int i1 = result.get(i).getPrice() * result.get(i).getAaa();
+                         zong+= i1;
+                     }
+              }
+         money.setText(zong+"");
+     }
 
     @Override
     public void onStart() {

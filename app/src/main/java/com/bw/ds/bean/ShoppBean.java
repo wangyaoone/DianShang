@@ -58,7 +58,16 @@ public class ShoppBean {
         private int count;
         private String pic;
         private int price;
+        private int aaa=1;
         private boolean ischecked=false;
+
+        public int getAaa() {
+            return aaa;
+        }
+
+        public void setAaa(int aaa) {
+            this.aaa = aaa;
+        }
 
         public int getCommodityId() {
             return commodityId;

@@ -24,11 +24,6 @@ import com.bw.ds.presenter.DetailsPresenter;
 import com.bw.ds.view.DetailsView;
 import com.google.gson.Gson;
 
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -38,7 +33,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.internal.Utils;
 
-import static org.jsoup.nodes.Document.OutputSettings.Syntax.html;
+
 
 public class DetailsActivity extends BaseActivity<DetailsPresenter> implements DetailsView {
 

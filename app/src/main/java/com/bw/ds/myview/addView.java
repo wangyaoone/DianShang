@@ -21,7 +21,8 @@ public class addView extends LinearLayout {
     private TextView kjia;
     private EditText ked;
     private TextView kjian;
-    private int num=1;
+    private int i;
+
     public addView(Context context) {
         super(context);
     }
@@ -36,24 +37,27 @@ public class addView extends LinearLayout {
         super(context, attrs, defStyleAttr);
     }
 
+    public void setnumbre(int numbre){
+        ked.setText(numbre+"");
+    }
+
     private void initDate(final Context context, AttributeSet attrs) {
        LayoutInflater.from(context).inflate(R.layout.add_item,this);
         kjian = findViewById(R.id.jian);
         ked = findViewById(R.id.eddate);
         kjia = findViewById(R.id.jia);
                 //为输入框设置默认值
-               ked.setText(num+"");
-
-          //加减的点击事件
+               ked.setText(1+"");
+        String s = ked.getText().toString();
+        i = Integer.parseInt(s);
+        //加减的点击事件
         kjian.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                   if (num>1){
-                       num--;
-                       ked.setText(num+"");
-                       dateClick.getdate(num);
-                   }else {
-          Toast.makeText(context, "再减就删了啊", Toast.LENGTH_SHORT).show();
+                   if (i >=1){
+                       i--;
+                       ked.setText(i +"");
+                       dateClick.getdate(i);
                    }
             }
         });
@@ -61,9 +65,9 @@ public class addView extends LinearLayout {
         kjia.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                   num++;
-                ked.setText(num+"");
-                dateClick.getdate(num);
+                i++;
+                ked.setText(i +"");
+                dateClick.getdate(i);
             }
         });
     }

@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,8 +31,6 @@ import java.util.Map;
  * @Description:
  */
 public class ShoppAdapter extends RecyclerView.Adapter<ShoppAdapter.viewholder> {
-     private Map<String,Boolean> map=new HashMap<>();
-     private Map<Integer,Integer>mapmoney=new HashMap<>();
      private Context context;
      private List<ShoppBean.ResultBean>list;
 
@@ -39,7 +38,6 @@ public class ShoppAdapter extends RecyclerView.Adapter<ShoppAdapter.viewholder> 
     public ShoppAdapter(Context context, List<ShoppBean.ResultBean> list) {
         this.context = context;
         this.list = list;
-        getGetcheck(false);
     }
 
     @NonNull
@@ -57,43 +55,25 @@ public class ShoppAdapter extends RecyclerView.Adapter<ShoppAdapter.viewholder> 
         viewholder.img.setImageURI(uri);
         viewholder.name.setText(list.get(i).getCommodityName());
         viewholder.money.setText("¥"+list.get(i).getPrice());
-               //设置全不选及全选
-        String s = list.get(i).getCommodityId() + "";
-        viewholder.check.setChecked(map.get(s));
-              //在点击事件中设置反选功能
-        viewholder.check.setOnClickListener(new View.OnClickListener() {
+
+        //反选
+        viewholder.check.setOnCheckedChangeListener(null);
+        viewholder.check.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onClick(View v) {
-
-                   //价格
-
-                  if (viewholder.check.isChecked()){
-
-                  }
-
-
-                String s = list.get(i).getCommodityId() + "";
-                map.put(s,  viewholder.check.isChecked());
-                boolean flag=true;
-                 for (String key:map.keySet()){
-                     Boolean aBoolean = map.get(key);
-                        if (!aBoolean){
-                            flag=false;
-                            bool.getdate(flag);
-                        }
-                 }
-               if (flag){
-                   bool.getdate(flag);
-               }
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+             list.get(i).setIschecked(viewholder.check.isChecked());
+                      bool.getdate();
             }
         });
 
+        viewholder.addview.setnumbre(list.get(i).getAaa());
         //接收自定义控件的值
         viewholder.addview.setDateClick(new addView.DateClick() {
-
             @Override
             public void getdate(int num) {
-                mapmoney.put(list.get(i).getPrice(),num);
+              list.get(i).setAaa(num);
+                bool.getdate();
+                bool.del(num,i);
             }
         });
 
@@ -102,11 +82,9 @@ public class ShoppAdapter extends RecyclerView.Adapter<ShoppAdapter.viewholder> 
             @Override
             public void onClick(View v) {
                 bool.delete(i);
+
             }
         });
-
-
-
     }
 
     @Override
@@ -134,23 +112,13 @@ public class ShoppAdapter extends RecyclerView.Adapter<ShoppAdapter.viewholder> 
             }
         }
 
-    public void  getcheck(boolean a){
-        getGetcheck(a);
-        notifyDataSetChanged();
-    }
 
-    public void getGetcheck(boolean a) {
-        map.clear();
-        for(int i=0;i<list.size();i++){
-            map.put(list.get(i).getCommodityId()+"",a);
-        }
-    }
 
     //接口回调
        public interface Bool{
-          void getdate(boolean flag);
+          void getdate();
           void delete(int i);
-
+          void del(int num,int i);
        }
        private Bool bool;
 
